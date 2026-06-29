@@ -1,0 +1,37 @@
+{
+  "name": "supplier-sync",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "cj:auth:token": "tsx src/cli.ts cj:auth:token",
+    "cj:auth:refresh": "tsx src/cli.ts cj:auth:refresh",
+    "cj:sync:categories": "tsx src/cli.ts cj:sync:categories",
+    "cj:sync:warehouses": "tsx src/cli.ts cj:sync:warehouses",
+    "cj:sync:index": "tsx src/cli.ts cj:sync:index",
+    "cj:worker": "tsx src/cli.ts cj:worker",
+    "products:view": "tsx src/product-list-server.ts"
+  },
+  "dependencies": {
+    "crawlee": "^3.15.3",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
+    "ioredis": "^5.8.2",
+    "postgres": "^3.4.7",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "drizzle-kit": "^0.31.8",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}
