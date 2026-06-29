@@ -125,7 +125,7 @@ export class CjApiClient {
         message: envelope.message ?? `CJ HTTP ${statusCode}`,
         statusCode,
         cjCode: envelope.code,
-        requestId: envelope.requestId,
+        requestId: envelope.requestId ?? undefined,
         pointsInfo: envelope.pointsInfo,
         retryable: statusCode >= 500 || statusCode === 429
       });
@@ -137,7 +137,7 @@ export class CjApiClient {
         message: envelope.message ?? `CJ business error ${envelope.code}`,
         statusCode,
         cjCode: envelope.code,
-        requestId: envelope.requestId,
+        requestId: envelope.requestId ?? undefined,
         pointsInfo: envelope.pointsInfo,
         retryable: false
       });
@@ -191,7 +191,7 @@ export class CjApiClient {
         message: envelope.message ?? `CJ HTTP ${statusCode}`,
         statusCode,
         cjCode: envelope.code,
-        requestId: envelope.requestId,
+        requestId: envelope.requestId ?? undefined,
         pointsInfo: envelope.pointsInfo,
         retryable: statusCode >= 500 || statusCode === 429
       });
@@ -203,7 +203,7 @@ export class CjApiClient {
         message: envelope.message ?? `CJ business error ${envelope.code}`,
         statusCode,
         cjCode: envelope.code,
-        requestId: envelope.requestId,
+        requestId: envelope.requestId ?? undefined,
         pointsInfo: envelope.pointsInfo,
         retryable: false
       });

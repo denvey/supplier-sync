@@ -204,13 +204,13 @@ export class CjProductIndexer {
           return;
         }
 
-        await this.upsertProducts(account.id, cursor.countryCode, result.envelope.requestId, products);
+        await this.upsertProducts(account.id, cursor.countryCode, result.envelope.requestId ?? undefined, products);
 
         if (page >= totalPages || totalPages === 0) {
           await this.cursorStore.complete(cursor.id, {
             totalRecords,
             totalPages,
-            requestId: result.envelope.requestId
+            requestId: result.envelope.requestId ?? undefined
           });
           this.info(`[cj:sync:index] cursor complete id=${cursor.id} category=${cursor.categoryId} country=${cursor.countryCode} totalRecords=${totalRecords} totalPages=${totalPages}`);
           return;
@@ -221,7 +221,7 @@ export class CjProductIndexer {
           nextPage: page,
           totalRecords,
           totalPages,
-          requestId: result.envelope.requestId
+          requestId: result.envelope.requestId ?? undefined
         });
       }
 

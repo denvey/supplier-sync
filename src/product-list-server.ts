@@ -5,6 +5,7 @@ import { createDb } from "./db/client.js";
 import { cjAccounts, cjProductIndexes } from "./db/schema.js";
 
 const defaultPort = 4173;
+const defaultHost = "127.0.0.1";
 const pageSizeOptions = [20, 50, 100] as const;
 
 type PageSize = typeof pageSizeOptions[number];
@@ -57,8 +58,9 @@ const server = http.createServer(async (request, response) => {
 });
 
 const port = parsePort(process.env.PORT);
-server.listen(port, () => {
-  console.log(`Product list page: http://localhost:${port}/products`);
+const host = process.env.HOST ?? defaultHost;
+server.listen(port, host, () => {
+  console.log(`Product list page: http://${host}:${port}/products`);
 });
 
 process.on("SIGINT", () => {

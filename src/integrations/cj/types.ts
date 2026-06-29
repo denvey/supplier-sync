@@ -10,9 +10,9 @@ export interface CjEnvelope<T> {
   code: number;
   result?: boolean;
   success?: boolean;
-  message?: string;
+  message?: string | null;
   data: T;
-  requestId?: string;
+  requestId?: string | null;
   pointsInfo?: CjPointsInfo;
 }
 

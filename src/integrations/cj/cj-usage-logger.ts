@@ -53,6 +53,6 @@ export class CjUsageLogger {
   }
 }
 
-function optionalText(value: string | undefined) {
-  return value === undefined ? undefined : sanitizePostgresText(value);
+function optionalText(value: string | null | undefined) {
+  return value == null ? undefined : sanitizePostgresText(value);
 }

@@ -30,7 +30,7 @@ export class CjMetadataSync {
       const result = await this.options.apiClient.getCategory(account.id);
       await this.options.usageLogger.logSuccess(account.id, result);
       await this.upsertCategories(account.id, result.envelope.data);
-      await this.cursorStore.complete(cursor.id, { requestId: result.envelope.requestId });
+      await this.cursorStore.complete(cursor.id, { requestId: result.envelope.requestId ?? undefined });
     } catch (error) {
       await this.options.usageLogger.logError({
         accountId: account.id,
@@ -55,7 +55,7 @@ export class CjMetadataSync {
       const result = await this.options.apiClient.getGlobalWarehouseList(account.id);
       await this.options.usageLogger.logSuccess(account.id, result);
       await this.upsertWarehouses(account.id, result.envelope.data);
-      await this.cursorStore.complete(cursor.id, { requestId: result.envelope.requestId });
+      await this.cursorStore.complete(cursor.id, { requestId: result.envelope.requestId ?? undefined });
     } catch (error) {
       await this.options.usageLogger.logError({
         accountId: account.id,
